@@ -1,9 +1,8 @@
-package org.example.algorythms;
+package org.example.algorithms;
 
-import org.example.graph.interfaces.Graph;
+import org.example.core.interfaces.Graph;
 
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Stack;
 
 public class Kosaraju<U, V> extends HashMap<String, Stack<U>> {
@@ -55,8 +54,17 @@ public class Kosaraju<U, V> extends HashMap<String, Stack<U>> {
     }
 
     public void showCommunities(){
+        System.out.println(this);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
         for (java.util.Map.Entry<String, Stack<U>> entry : entrySet()) {
-            System.out.println(entry.getKey() + entry.getValue().toString());
+            sb.append(entry.getKey()).append(": ");
+            sb.append(entry.getValue().toString()).append("%n");
+
         }
+        return sb.toString();
     }
 }

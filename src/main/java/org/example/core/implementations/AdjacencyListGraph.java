@@ -1,18 +1,15 @@
-package org.example.graph.implementations;
+package org.example.core.implementations;
 
 import java.util.HashMap;
 import java.util.Optional;
 import java.util.Set;
 
-import org.example.graph.abstracts.GraphBase;
-import org.example.graph.interfaces.Graph;
-import org.example.entity.GraphType;
+import org.example.core.abstracts.GraphBase;
+import org.example.core.interfaces.Graph;
 
 public class AdjacencyListGraph<T, U>
         extends GraphBase<T, U> {
     //type restricted attributes
-
-
     private final HashMap<T, HashMap<T, Optional<U>>> vertex;
     //common methods
     public AdjacencyListGraph(GraphType type, boolean isWeighted){

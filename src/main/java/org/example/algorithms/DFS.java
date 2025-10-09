@@ -1,6 +1,6 @@
-package org.example.algorythms;
+package org.example.algorithms;
 
-import org.example.graph.interfaces.Graph;
+import org.example.core.interfaces.Graph;
 
 import java.util.HashMap;
 

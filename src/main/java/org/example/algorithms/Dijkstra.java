@@ -1,6 +1,6 @@
-package org.example.algorythms;
+package org.example.algorithms;
 
-import org.example.graph.interfaces.Graph;
+import org.example.core.interfaces.Graph;
 
 import java.util.*;
 public class Dijkstra {
@@ -56,7 +56,7 @@ public class Dijkstra {
         Collections.reverse(path);
 
         if (!isSolvable || !path.getFirst().equals(v1)) {
-            System.out.println("impossível usar Dijkstra nesse grafo");
+            System.out.println("impossível usar Dijkstra nesse grafo, ou não deu pra achar um caminho");
             return null;
         }
 

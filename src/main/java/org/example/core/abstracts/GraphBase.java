@@ -1,7 +1,6 @@
-package org.example.graph.abstracts;
+package org.example.core.abstracts;
 
-import org.example.graph.interfaces.Graph;
-import org.example.entity.GraphType;
+import org.example.core.interfaces.Graph;
 
 public abstract class GraphBase<T, U>
         implements Graph<T, U> {

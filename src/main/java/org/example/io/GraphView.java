@@ -1,4 +1,4 @@
-package org.example.util;
+package org.example.io;
 
 import org.graphstream.graph.Graph;
 import org.graphstream.graph.implementations.SingleGraph;
@@ -7,9 +7,9 @@ import org.graphstream.stream.file.images.Resolutions;
 import org.graphstream.ui.swing.util.SwingFileSinkImages;
 
 import java.io.IOException;
-
+//a melhorar
 public class GraphView {
-    public static <T, U> void processGraph(org.example.graph.interfaces.Graph<T, U> customGraph) {
+    public static <T, U> void processGraph(org.example.core.interfaces.Graph<T, U> customGraph) {
         Graph graph = new SingleGraph("grafo");
 
         for (T v : customGraph.vertexSet()) {

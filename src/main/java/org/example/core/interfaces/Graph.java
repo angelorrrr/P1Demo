@@ -1,6 +1,5 @@
-package org.example.graph.interfaces;
+package org.example.core.interfaces;
 
-import java.util.Optional;
 import java.util.Set;
 
 
@@ -24,4 +23,26 @@ public interface Graph<T, U> {
     void showRelations();
     boolean isDirected();
     boolean isEmpty();
+
+    enum GraphType {
+        DIRECTED("D"),
+        UNDIRECTED("ND");
+        final String name;
+        GraphType(String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+        public static GraphType fromValue(String text) {
+            for (GraphType type : GraphType.values()) {
+                if (type.name.equalsIgnoreCase(text)) {
+                    return type;
+                }
+            }
+            throw new IllegalArgumentException("Valor de tipo de grafo inválido: " + text);
+        }
+    }
 }
