@@ -2,45 +2,38 @@ package org.example.algorithms;
 
 import org.example.core.interfaces.Graph;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.function.Consumer;
 
-public class DFS<V, U> {
+public class DFS{
 
-    public DFS() {
+    //aqui só percorre um caminho que compreenda o vertice de entrada.
+    //não há necessidade do for para os outros vertices, porque ele iria para os outros
+    //componentes
+    public static <V, U> void search(Graph<V, U> graph, V vertex, Consumer<V> preOrder, Consumer<V> postOrder) {
+        Set<V> visited = new HashSet<>();
+        visited.add(vertex);
+        dfs(vertex, visited, graph, preOrder, postOrder);
     }
 
-    public List<List<V>> findConnectedComponents(Graph<V, U> graph) {
-        List<List<V>> allComponents = new ArrayList<>();
-        HashMap<V, Boolean> visitedVertexes = new HashMap<>();
-        
-        for (V vertex : graph.vertexSet()) {
-            visitedVertexes.put(vertex, Boolean.FALSE);
-        }
-
-        for (V vertex : visitedVertexes.keySet()) {
-            if (!visitedVertexes.get(vertex)) {
-                List<V> currentComponent = new ArrayList<>();
-        
-                dfs(vertex, visitedVertexes, graph, currentComponent);
-                allComponents.add(currentComponent);
-            }
-        }
-        
-        return allComponents;
-    }
-
-    private void dfs(V vertex, HashMap<V, Boolean> visitedVertices, Graph<V, U> graph, List<V> currentComponent) {
-        visitedVertices.put(vertex, Boolean.TRUE);
-        currentComponent.add(vertex);
-
-        if (graph.getNeightbours(vertex) != null) {
-            for (V neighbour : graph.getNeightbours(vertex)) {
-                if (!visitedVertices.get(neighbour)) {
-                    dfs(neighbour, visitedVertices, graph, currentComponent);
-                }
+    public static <V, U>void search(Graph<V,U> graph, Consumer<V> preOrder, Consumer<V> postOrder){
+        Set<V> visited = new HashSet<>();
+        for(V vertex : graph.vertexSet()){
+            if(!visited.contains(vertex)){
+                dfs(vertex, visited, graph, preOrder, postOrder);
             }
         }
     }
+    private static <V, U> void dfs(V vertex, Set<V> visited, Graph<V, U> graph, Consumer<V> preOrder, Consumer<V> postOrder) {
+        visited.add(vertex);
+        preOrder.accept(vertex);
+        for (V neighbour : graph.getNeightbours(vertex)) {
+            if (!visited.contains(neighbour)) {
+                dfs(neighbour, visited, graph, preOrder, postOrder);
+            }
+        }
+
+        postOrder.accept(vertex);
+    }
+
 }

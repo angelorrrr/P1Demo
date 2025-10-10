@@ -3,56 +3,37 @@ package org.example.algorithms;
 import org.example.core.interfaces.Graph;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
+import java.util.function.Consumer;
 
 public class Kosaraju<U, V> extends HashMap<String, Stack<U>> {
     public Kosaraju(Graph<U, V> graph){
         Stack<U> stack = new Stack<>();
-        HashMap<U, Boolean> visited = new HashMap<>();
-        for(U vertex : graph.vertexSet()){
-            visited.put(vertex, Boolean.FALSE);
-        }
-        for(U vertex : graph.vertexSet()){
-            fillOrder(vertex, visited, stack, graph);
-        }
+        for(U vertex : graph.vertexSet())
+            DFS.search(graph, vertex, v->{}, stack::push);
+
 
         Graph<U, V> transposed = graph.getTransposed();
+        Set<U> visited = new HashSet<>();
 
-        for(U vertex : transposed.vertexSet()){
-            visited.put(vertex, Boolean.FALSE);
-        }
         int counter = 1;
-        while (!stack.empty()){
+        while (!stack.empty()) {
             U vertex = stack.pop();
-            if (!visited.get(vertex)) {
-                Stack<U> sccStack = new Stack<>();
-                dfsCollect(vertex, visited, sccStack, transposed);
-                put("comunidade "+counter+": ", sccStack);
-                counter++;
-            }
-        }
-    }
+            if(visited.contains(vertex)) continue;
 
-    private void dfsCollect(U vertex, HashMap<U, Boolean> visited, Stack<U> sccStack, Graph<U, V> graph) {
-        visited.put(vertex, Boolean.TRUE);
-        sccStack.push(vertex);
-        for (U neighbour : graph.getNeightbours(vertex)) {
-            if (!visited.get(neighbour)) {
-                dfsCollect(neighbour, visited, sccStack, graph);
-            }
-        }
-    }
+            Stack<U> sccStack = new Stack<>();
+            DFS.search(transposed, vertex, (v)->{
+                visited.add(v);
+                sccStack.push(v);
+            }, v->{});
 
-    private void fillOrder(U vertex, HashMap<U, Boolean> visited, Stack<U> stack, Graph<U, V> graph){
-        visited.put(vertex, Boolean.TRUE);
-        for(U neighbour : graph.getNeightbours(vertex)){
-            if(!visited.get(neighbour)){
-                fillOrder(neighbour, visited, stack, graph);
-            }
+            put("comunidade "+counter+": ", sccStack);
+            counter++;
         }
-        stack.push(vertex);
-    }
 
+    }
     public void showCommunities(){
         System.out.println(this);
     }
