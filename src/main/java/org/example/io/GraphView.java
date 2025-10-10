@@ -9,7 +9,7 @@ import org.graphstream.ui.swing.util.SwingFileSinkImages;
 import java.io.IOException;
 //a melhorar
 public class GraphView {
-    public static <T, U> void processGraph(org.example.core.interfaces.Graph<T, U> customGraph) {
+    public static <T, U> String processGraph(org.example.core.interfaces.Graph<T, U> customGraph) {
         Graph graph = new SingleGraph("grafo");
 
         for (T v : customGraph.vertexSet()) {
@@ -37,14 +37,16 @@ public class GraphView {
                 fill-color: gray;
             }
         """);
-
         try {
+            String outputFile = "grafo.png";
             var fsi = new SwingFileSinkImages(FileSinkImages.OutputType.PNG, Resolutions.HD720);
             fsi.setLayoutPolicy(FileSinkImages.LayoutPolicy.COMPUTED_FULLY_AT_NEW_IMAGE);
-            fsi.writeAll(graph, "grafo.png");
-            System.out.println("Imagem gerada: grafo.png");
+            fsi.writeAll(graph, outputFile);
+            System.out.println("Imagem gerada: "+outputFile);
+            return "salvo em "+outputFile;
         } catch (IOException e) {
             System.err.println("Erro ao exportar: " + e.getMessage());
+            return "falha ao salvar";
         }
     }
 }

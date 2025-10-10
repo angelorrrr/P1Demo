@@ -16,6 +16,7 @@ public abstract class GraphBase<T, U>
     public boolean isDirected() {
         return type==GraphType.DIRECTED;
     }
+    @Override
     public boolean isWeighted(){
         return isWeighted;
     }

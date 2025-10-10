@@ -3,14 +3,14 @@ package org.example.ui.commands.essentials;
 import org.example.core.interfaces.Graph;
 import org.example.ui.Menu;
 import org.example.ui.commands.Command;
-import org.example.ui.commands.Context;
+import org.example.ui.Context;
 
 import java.util.Optional;
 import java.util.Scanner;
 
 public class RelationCommand implements Command {
     @Override
-    public void execute(String... args) {
+    public void execute() {
         Scanner sc = Menu.getInstance().getScanner();
         System.out.println("selecione os dois vértices:");
         Optional<Object> v1 = Context.getInstance().selectVertex("primeiro", sc);

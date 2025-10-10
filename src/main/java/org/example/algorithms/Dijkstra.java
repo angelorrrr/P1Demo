@@ -4,15 +4,18 @@ import org.example.core.interfaces.Graph;
 
 import java.util.*;
 public class Dijkstra {
-    private final Map<Object, Double> distances = new HashMap<>();
     private final Map<Object, Object> predecessors = new HashMap<>();
-    private final PriorityQueue<Object> queue;
-    private final Object v1;
-    private boolean isSolvable;
-
+    private Object v1;
+    private final boolean isWeighted;
     public Dijkstra(final Graph<Object, Object> graph, final Object v1) {
+        isWeighted = graph.isWeighted();
+        if(!isWeighted) {
+            System.out.println("não faz sentido usar dijkstra sm peso");
+            return;
+        }
         this.v1 = v1;
-        this.queue = new PriorityQueue<>(Comparator.comparingDouble(distances::get));
+        Map<Object, Double> distances = new HashMap<>();
+        PriorityQueue<Object> queue = new PriorityQueue<>(Comparator.comparingDouble(distances::get));
 
         for (Object vertex : graph.vertexSet()) {
             distances.put(vertex, Double.MAX_VALUE);
@@ -37,17 +40,18 @@ public class Dijkstra {
                         queue.add(neighbor);
                     }
                 } catch (ClassCastException | NullPointerException e) {
-                    isSolvable = false;
                     return;
                 }
             }
         }
-
-        isSolvable = true;
     }
 
     public List<Object> constructSet(Object v2) {
         List<Object> path = new ArrayList<>();
+        if(!isWeighted) {
+            System.out.println("não faz sentido usar dijkstra sm peso");
+            return path;
+        }
         for (Object at = v2; at != null; at = predecessors.get(at)) {
             path.add(at);
             if (at.equals(v1)) break;
@@ -55,9 +59,9 @@ public class Dijkstra {
 
         Collections.reverse(path);
 
-        if (!isSolvable || !path.getFirst().equals(v1)) {
-            System.out.println("impossível usar Dijkstra nesse grafo, ou não deu pra achar um caminho");
-            return null;
+        if (!path.getFirst().equals(v1)) {
+            System.out.println("não deu pra achar um caminho");
+            return List.of();
         }
 
         return path;

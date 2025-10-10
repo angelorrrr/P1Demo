@@ -62,7 +62,7 @@ public class Kosaraju<U, V> extends HashMap<String, Stack<U>> {
         StringBuilder sb = new StringBuilder();
         for (java.util.Map.Entry<String, Stack<U>> entry : entrySet()) {
             sb.append(entry.getKey()).append(": ");
-            sb.append(entry.getValue().toString()).append("%n");
+            sb.append(entry.getValue().toString()).append("\n");
 
         }
         return sb.toString();

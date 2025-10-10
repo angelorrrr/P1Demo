@@ -9,9 +9,8 @@ void main() throws IOException {
     System.setProperty("org.graphstream.ui", "swing");
     System.setProperty("java.awt.headless", "true");
     Menu menu = Menu.getInstance();
-    for(boolean action = true; action;){
-        action = menu.menuAction();                                                                                                                                                                                                                     ;
+    for(;;){
+        menu.executeSelectedCommand();                                                                                                                                                                                                                     ;
         System.out.println("continuando");
     }
-    System.out.println("fim");
 }

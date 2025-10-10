@@ -3,7 +3,7 @@ package org.example.ui.commands.essentials;
 import org.example.core.interfaces.Graph;
 import org.example.ui.Menu;
 import org.example.ui.commands.Command;
-import org.example.ui.commands.Context;
+import org.example.ui.Context;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 public class NeighboursCommand implements Command {
     @Override
-    public void execute(String... args) {
+    public void execute() {
         Scanner sc = Menu.getInstance().getScanner();
         Optional<Object> v = Context.getInstance().selectVertex("escolha o vértice:", sc);
         if(v.isEmpty()){

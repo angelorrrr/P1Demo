@@ -1,4 +1,4 @@
-package org.example.ui.commands;
+package org.example.ui;
 
 import org.example.core.interfaces.Graph;
 import org.example.io.TXTReader;
@@ -11,28 +11,22 @@ import java.util.Scanner;
 
 public class Context {
     private static Context instance;
-    private Graph<?, ?> graph;
-    private final TXTReader reader;
+    private final Graph<?, ?> graph;
+
     public synchronized static Context getInstance(){
         if (instance == null) {
             try {
                 instance = new Context();
             } catch (IOException e) {
-                e.printStackTrace();
+                //fazer uma exceção própria depois
                 throw new RuntimeException("não deu de ler o grafo");
             }
         }
         return instance;
     }
     private Context() throws IOException {
-        reader = new TXTReader("graph.txt");
-        setGraph(
-                reader.getGraph()
-        );
-    }
-
-    public void setGraph(Graph<?, ?> graph) {
-        this.graph = graph;
+        TXTReader reader = new TXTReader("graph.txt");
+        this.graph = reader.getGraph();
     }
     public Graph<?, ?> getGraph() {
         return graph;

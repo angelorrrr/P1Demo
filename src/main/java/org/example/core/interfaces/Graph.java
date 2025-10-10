@@ -23,7 +23,7 @@ public interface Graph<T, U> {
     void showRelations();
     boolean isDirected();
     boolean isEmpty();
-
+    boolean isWeighted();
     enum GraphType {
         DIRECTED("D"),
         UNDIRECTED("ND");

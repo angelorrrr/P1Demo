@@ -1,21 +1,20 @@
 package org.example.ui.commands.others;
 
-import org.example.algorithms.Kosaraju;
 import org.example.core.interfaces.Graph;
+import org.example.io.GraphView;
 import org.example.ui.commands.Command;
 import org.example.ui.Context;
 
-public class CommunityCommand implements Command {
+public class DisplayCommand implements Command {
     @Override
-    public void execute() {
+    public void execute(){
         Graph<?, ?> graph = Context.getInstance().getGraph();
-        Kosaraju<?, ?> solution = new Kosaraju<>(graph);
-        solution.showCommunities();
-        appendHistory(solution.toString());
+        String result = GraphView.processGraph(graph);
+        appendHistory(result);
     }
 
     @Override
     public String description() {
-        return "Comando comunidade";
+        return "comando display";
     }
 }
