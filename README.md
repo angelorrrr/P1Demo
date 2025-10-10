@@ -12,8 +12,8 @@
 * **Professor:** Jacob
 
 ## Equipe
-* **Nome:** [Camila Luiza Silva Machado]
-* **Nome:** [Angelo Antonio Barbosa Luz Freitas]
+* **Nome:** Camila Luiza Silva Machado
+* **Nome:** Angelo Antonio Barbosa Luz Freitas
 
 ## 1. Descrição do Projeto
 Este projeto, desenvolvido para a disciplina de Estrutura de Dados Avançada, aplica conceitos teóricos na resolução de um problema prático do mundo da computação. O trabalho consistiu na implementação de uma estrutura de dados para grafos a partir do zero, com operações básicas e um algoritmo de busca para solucionar um problema específico.
