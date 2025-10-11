@@ -62,7 +62,7 @@ Requisitos: Você vai precisar desse repositório no seu computador e de um jdk
 ### 5.2- Pelo jar 
 Requisitos: Você vai precisar de um jre na sua máquina
 * **Passo 1:** abrir o arquivo (`Grafos.jar`) no terminal (está localizado na pasta out desse diretório)
-* **Passo 2:** Crie um arquivo (`graph.txt`) no mesmo nível que o arquivo jar. Siga a estrutura descrita no [#4. Formato do Arquivo de Entrada](tópico 4).
+* **Passo 2:** Crie um arquivo (`graph.txt`) no mesmo nível que o arquivo jar. Siga a estrutura descrita nas **[regras de formatação](#4-formato-do-arquivo-de-entrada)**..
 * **Passo 3:** execute o código abaixo no terminal:
 ```bash
 java -jar Grafos.jar
