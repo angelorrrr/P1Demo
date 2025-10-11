@@ -10,7 +10,7 @@ import org.example.io.TXTReader;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    public static final String filePath = "grafo.txt";
+    public static final String filePath = "graph.txt";
 
     static void main() {
         System.setProperty("org.graphstream.ui", "swing");
