@@ -46,7 +46,6 @@ public class DFS{
 
     public static <V, U> void search(Graph<V, U> graph, V vertex, Consumer<V> preOrder, Consumer<V> postOrder) {
         Set<V> visited = new HashSet<>();
-        visited.add(vertex);
         dfs(vertex, visited, graph, preOrder, postOrder);
     }
 
@@ -74,7 +73,7 @@ public class DFS{
     /// @param visited conjunto de vértices já visitados
     ///
     /// @since 1.0
-    private static <V, U> void dfs(V vertex, Set<V> visited, Graph<V, U> graph, Consumer<V> preOrder, Consumer<V> postOrder) {
+    public static <V, U> void dfs(V vertex, Set<V> visited, Graph<V, U> graph, Consumer<V> preOrder, Consumer<V> postOrder) {
         visited.add(vertex);
         preOrder.accept(vertex);
         for (V neighbour : graph.getNeightbours(vertex)) {

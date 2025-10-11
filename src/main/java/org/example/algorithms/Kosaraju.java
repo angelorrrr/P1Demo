@@ -2,10 +2,7 @@ package org.example.algorithms;
 
 import org.example.core.interfaces.Graph;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 import java.util.function.Consumer;
 ///
 /// <b>Algoritmo de {@link Kosaraju} para SCC</b>
@@ -36,31 +33,32 @@ import java.util.function.Consumer;
 /// menos complicada de repesentar essas assoçiações.
 ///
 /// Para a posteridade: gerar uma lista de {@link Graph} que são componentes conexos
-public class Kosaraju<U, V> extends HashMap<String, Stack<U>> {
+public class Kosaraju<V, U> extends HashMap<String, List<V>> {
+
     /// Construtor da classe {@link Kosaraju}
     ///
     /// @param graph o grafo a gerar os componentes conexos
-    public Kosaraju(Graph<U, V> graph){
-        Stack<U> stack = new Stack<>();
-        for(U vertex : graph.vertexSet())
-            DFS.search(graph, vertex, v->{}, stack::push);
+    public Kosaraju(Graph<V, U> graph){
+        Stack<V> stack = new Stack<>();
+        DFS.search(graph, stack::push, v->{});
 
 
-        Graph<U, V> transposed = graph.getTransposed();
-        Set<U> visited = new HashSet<>();
+        Graph<V, U> transposed = graph.getTransposed();
+        Set<V> visited = new HashSet<>();
 
         int counter = 1;
         while (!stack.empty()) {
-            U vertex = stack.pop();
+            V vertex = stack.pop();
             if(visited.contains(vertex)) continue;
 
-            Stack<U> sccStack = new Stack<>();
-            DFS.search(transposed, vertex, (v)->{
+            List<V> list = new LinkedList<>();
+            Consumer<V> preOrderAction = (v)->{
                 visited.add(v);
-                sccStack.push(v);
-            }, v->{});
+                list.add(v);
+            };
+            DFS.dfs(vertex, visited, graph, preOrderAction, (v)->{});
 
-            put("comunidade "+counter+": ", sccStack);
+            put("comunidade "+counter+": ", list);
             counter++;
         }
 
@@ -75,7 +73,7 @@ public class Kosaraju<U, V> extends HashMap<String, Stack<U>> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for (java.util.Map.Entry<String, Stack<U>> entry : entrySet()) {
+        for (java.util.Map.Entry<String, List<V>> entry : entrySet()) {
             sb.append(entry.getKey()).append(": ");
             sb.append(entry.getValue().toString()).append("\n");
 

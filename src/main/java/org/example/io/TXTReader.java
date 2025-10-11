@@ -39,60 +39,38 @@ public class TXTReader {
                 throw new RuntimeException("Grafo fora dos padrões especificados");
 
             boolean isWeighted = (firstLine.length == 3);
+            Graph<?, Double> graph = new AdjacencyListGraph<>(type, isWeighted);
             try {
-                Integer.parseInt(firstLine[0].trim());
-                Graph<Integer, Double> graph = new AdjacencyListGraph<>(type, isWeighted);
-                return isWeighted ?
-                        populateGraphWithWeights(graph, br, firstLine, Integer::parseInt) :
-                        populateGraphWithoutWeights(graph, br, firstLine, Integer::parseInt);
-            } catch (NumberFormatException ignored) {
-                Graph<String, Double> graph = new AdjacencyListGraph<>(type, isWeighted);
-                return isWeighted ?
-                        populateGraphWithWeights(graph, br, firstLine, s -> s) :
-                        populateGraphWithoutWeights(graph, br, firstLine, s -> s);
+                Integer.parseInt(firstLine[0]);
+                populateGraph((Graph<Integer, Double>) graph, br, Integer::parseInt);
+            }catch (NumberFormatException ignored) {
+                populateGraph((Graph<String, Double>)graph, br, Function.identity()); // Function.identity() for String
             }
+
+            return graph;
         }
     }
-
-    private <T> Graph<T, Double> populateGraphWithWeights(Graph<T, Double> graph, BufferedReader br, String[] firstLine, Function<String, T> converter) throws IOException {
-        T src = converter.apply(firstLine[0].trim());
-        T dest = converter.apply(firstLine[1].trim());
-        double weight = Double.parseDouble(firstLine[2].trim());
-        graph.addVertex(src);
-        graph.addVertex(dest);
-        graph.addRelation(src, dest, weight);
-
+    private Double weightGetter(String[] line){
+        if (line.length != 3)
+            return Double.NaN;
+        else
+            return Double.parseDouble(line[2]);
+    }
+    private <T> void populateGraph(Graph<T, Double> graph,
+                                   BufferedReader br,
+                                   Function<String, T> converter) throws IOException {
+        T src;
+        T dest;
         String line;
         while ((line = br.readLine()) != null) {
             String[] parts = line.split(" ");
-            if (parts.length != 3) continue;
             src = converter.apply(parts[0].trim());
             dest = converter.apply(parts[1].trim());
-            weight = Double.parseDouble(parts[2].trim());
+            Double weight = weightGetter(parts);
             graph.addVertex(src);
             graph.addVertex(dest);
             graph.addRelation(src, dest, weight);
         }
-        return graph;
     }
 
-    private <T> Graph<T, Double> populateGraphWithoutWeights(Graph<T, Double> graph, BufferedReader br, String[] firstLine, Function<String, T> converter) throws IOException {
-        T src = converter.apply(firstLine[0].trim());
-        T dest = converter.apply(firstLine[1].trim());
-        graph.addVertex(src);
-        graph.addVertex(dest);
-        graph.addRelation(src, dest, null);
-
-        String line;
-        while ((line = br.readLine()) != null) {
-            String[] parts = line.split(" ");
-            if (parts.length != 2) continue;
-            src = converter.apply(parts[0].trim());
-            dest = converter.apply(parts[1].trim());
-            graph.addVertex(src);
-            graph.addVertex(dest);
-            graph.addRelation(src, dest, null);
-        }
-        return graph;
-    }
 }

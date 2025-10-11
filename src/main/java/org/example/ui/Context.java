@@ -1,8 +1,8 @@
 package org.example.ui;
 
+import org.example.Main;
 import org.example.core.interfaces.Graph;
 import org.example.io.TXTReader;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class Context {
         return instance;
     }
     private Context() throws IOException {
-        TXTReader reader = new TXTReader("graph.txt");
+        TXTReader reader = new TXTReader(Main.filePath);
         this.graph = reader.getGraph();
     }
     public Graph<?, ?> getGraph() {
