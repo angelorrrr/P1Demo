@@ -6,11 +6,11 @@ import java.util.Set;
 
 import org.example.core.abstracts.GraphBase;
 import org.example.core.interfaces.Graph;
-
-public class AdjacencyListGraph<T, U>
-        extends GraphBase<T, U> {
+/// implementação de um {@link Graph} em lista de adjacências.
+public class AdjacencyListGraph<V, U>
+        extends GraphBase<V, U> {
     //type restricted attributes
-    private final HashMap<T, HashMap<T, Optional<U>>> vertex;
+    private final HashMap<V, HashMap<V, Optional<U>>> vertex;
     //common methods
     public AdjacencyListGraph(GraphType type, boolean isWeighted){
         super(type, isWeighted);
@@ -19,22 +19,22 @@ public class AdjacencyListGraph<T, U>
     //type restricted methods
 
     @Override
-    public U getRelation(T first, T second) {
+    public U getRelation(V first, V second) {
         Optional<U> weight = vertex.get(first).get(second);
         return weight.orElse(null);
     }
 
     @Override
-    public void addVertex(T vertex) {
+    public void addVertex(V vertex) {
         if (!this.vertex.containsKey(vertex)) {
             this.vertex.put(vertex, new HashMap<>());
         }
     }
     @Override
-    public void removeVertex(T vertex) {
+    public void removeVertex(V vertex) {
         this.vertex.remove(vertex);
     }
-    public void addRelation(T first, T second){
+    public void addRelation(V first, V second){
         if(isWeighted())
             return;
         if(!hasVertex(first)||!hasVertex(second))
@@ -45,7 +45,7 @@ public class AdjacencyListGraph<T, U>
             this.vertex.get(second).put(first, Optional.empty());
     }
     @Override
-    public void addRelation(T first, T second, U weight) {
+    public void addRelation(V first, V second, U weight) {
         if(!hasVertex(first)||!hasVertex(second))
             return;
 
@@ -55,30 +55,35 @@ public class AdjacencyListGraph<T, U>
 
     }
     @Override
-    public void removeRelation(T first, T second) {
+    public void removeRelation(V first, V second) {
         if(hasVertex(first)&&hasVertex(second))
             vertex.get(first).remove(second);
     }
     @Override
-    public boolean hasRelation(T first, T second) {
+    public boolean hasRelation(V first, V second) {
         return this.vertex.get(first).containsKey(second);
     }
     @Override
-    public int degreeOf(T vertex) {
+    public int degreeOf(V vertex) {
         return this.vertex.get(vertex).size();
     }
     @Override
-    public boolean hasVertex(T vertex) {
+    public boolean hasVertex(V vertex) {
         return this.vertex.containsKey(vertex);
     }
     @Override
-    public Set<T> getNeightbours(T vertex) {
+    public Set<V> getNeightbours(V vertex) {
         return this.vertex.get(vertex).keySet();
     }
 
     @Override
-    public Set<T> vertexSet() {
+    public Set<V> vertexSet() {
         return vertex.keySet();
+    }
+
+    @Override
+    public Graph<V, U> constructGraph() {
+        return new AdjacencyListGraph<>(type, isWeighted());
     }
 
     @Override
@@ -103,21 +108,5 @@ public class AdjacencyListGraph<T, U>
         );
     }
 
-    @Override
-    public Graph<T, U> getTransposed() {
-        Graph<T, U> transposed = new AdjacencyListGraph<>(GraphType.DIRECTED, isWeighted());
 
-        for(T vertex : vertexSet()){
-            transposed.addVertex(vertex);
-        }
-
-        for(T source : vertexSet()){
-            for(T neighbour : getNeightbours(source)){
-                U weight = getRelation(source, neighbour);
-                transposed.addRelation(neighbour, source, weight);
-            }
-        }
-
-        return transposed;
-    }
 }
