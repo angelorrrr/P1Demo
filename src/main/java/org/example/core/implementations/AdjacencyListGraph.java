@@ -16,6 +16,7 @@ import org.example.core.interfaces.Graph;
 ///
 /// @see org.example.core.abstracts.GraphBase
 /// @see org.example.core.interfaces.Graph
+/// implementação de um {@link Graph} em lista de adjacências.
 public class AdjacencyListGraph<V, U>
         extends GraphBase<V, U> {
     //type restricted attributes
@@ -32,6 +33,7 @@ public class AdjacencyListGraph<V, U>
     /// @param first fonte
     /// @param second destino
     /// @return  o valor associado ao valor da chave no hashmap caso exista. Se não, retorna nulo
+
     @Override
     public U getRelation(V first, V second) {
         Optional<U> weight = vertex.get(first).get(second);
@@ -42,6 +44,7 @@ public class AdjacencyListGraph<V, U>
 ///
 /// @see Graph#addVertex(Object)
 /// @param vertex vértice a ser adicionado
+
     @Override
     public void addVertex(V vertex) {
         if (!this.vertex.containsKey(vertex)) {
@@ -55,11 +58,11 @@ public class AdjacencyListGraph<V, U>
     ///
     /// @see Graph#removeVertex(Object)
     /// @param vertex vertice a ser removido
+
     @Override
     public void removeVertex(V vertex) {
         this.vertex.remove(vertex);
     }
-
     /// adiciona uma aresta a partir de dois vértices existentes.
     ///
     /// esse método com 2 atributos é para grafos sem peso (tratado na primeira condicional)
@@ -116,13 +119,6 @@ public class AdjacencyListGraph<V, U>
         if(!isDirected())
             vertex.get(second).remove(first);
     }
-
-    /// Implementação em {@link AdjacencyListGraph}
-    ///
-    /// dados dois vértices, verifica se a chave first no hashmap contém o valor second
-    /// @see Graph#hasRelation(Object, Object)
-    /// @param first vértice fonte
-    /// @param second vertice destino
     @Override
     public boolean hasRelation(V first, V second) {
         return this.vertex.get(first).containsKey(second);
@@ -160,7 +156,6 @@ public class AdjacencyListGraph<V, U>
     public Set<V> getNeightbours(V vertex) {
         return this.vertex.get(vertex).keySet();
     }
-
     /// Implementação em {@link AdjacencyListGraph}
     ///
     /// retorna os vértices do grafo a partir do hashmap
@@ -176,7 +171,6 @@ public class AdjacencyListGraph<V, U>
     ///
     /// @see Graph#constructGraph()
     /// @return um objeto da classe que implementa {@link Graph}
-
     @Override
     public Graph<V, U> constructGraph() {
         return new AdjacencyListGraph<>(type, isWeighted());
@@ -189,7 +183,6 @@ public class AdjacencyListGraph<V, U>
     public int size() {
         return this.vertex.size();
     }
-
     /// Implementação em {@link AdjacencyListGraph}
     ///
     /// Percorre o hashmap de vértices e arestas, exibindo a fonte, o alvo e as relações no terminal.

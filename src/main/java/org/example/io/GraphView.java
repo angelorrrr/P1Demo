@@ -37,7 +37,6 @@ public class GraphView {
                 fill-color: gray;
             }
         """);
-
         try {
             String outputFile = "grafo.png";
             var fsi = new SwingFileSinkImages(FileSinkImages.OutputType.PNG, Resolutions.HD720);

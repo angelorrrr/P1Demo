@@ -8,12 +8,14 @@ import org.example.core.interfaces.Graph;
 /// A factory constructGraph() simplesmente retorna um objeto da classe concreta que o implementa, permitindo assim a
 /// volatilidade da criação do grafo transposto entre as classes que implementam {@link Graph}.
 ///
+/// Classe
 public abstract class GraphBase<V, U>
         implements Graph<V, U> {
     //common attributes
     protected final GraphType type;
     private final boolean isWeighted;
     /// Constructor da classe GraphBase, comum a todas as classes filhas
+
     protected GraphBase(GraphType type, boolean isWeighted) {
         this.type = type;
         this.isWeighted = isWeighted;
@@ -21,6 +23,7 @@ public abstract class GraphBase<V, U>
     /// cálculo comum a todas as classes de grafo paara verificar o tipo
     ///
     /// @return true se for {@link org.example.core.interfaces.Graph.GraphType#DIRECTED}, falso caso contrário
+
     @Override
     public boolean isDirected() {
         return type==GraphType.DIRECTED;
