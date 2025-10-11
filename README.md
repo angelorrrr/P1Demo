@@ -2,7 +2,7 @@
 
 ## 
 <p align="center">
-  <img src="https://i.imgur.com/your-image-url.png" alt="Project Logo or Graph Example" width="400"/>
+  <img src="https://th.bing.com/th/id/R.5052a4e6f0705e791a5aba227d159831?rik=FwKKHWUyD3G0vA&pid=ImgRaw&r=0" alt="Project Logo or Graph Example" width="400"/>
 </p>
 
 ## 
@@ -43,8 +43,8 @@ O programa implementa todos os requisitos obrigatórios e desafios extras:
 O programa espera um arquivo `.txt` com o seguinte formato:
 * **1ª Linha:** `ND` para Grafos Não-Dirigidos ou `D` para Grafos Dirigidos.
 * **Linhas Seguintes:** Pares de vértices (`v1 v2`) para grafos não ponderados, ou trios (`v1 v2 peso`) para grafos ponderados.
-Ele precisa estar localizado na mesma pasta que o arquivo executável, e precisa estar nomeado como (`graph.txt`).
-**Exemplo (`graph.txt`):**
+  Ele precisa estar localizado na mesma pasta que o arquivo executável, e precisa estar nomeado como (`graph.txt`).
+  **Exemplo (`graph.txt`):**
 ```text
 ND
 A B
@@ -54,15 +54,15 @@ C D
 ```
 ## 5. Como rodar
 Existem 3 alternativas:
-### 5.1- Pela ide 
+### 5.1- Pela ide
 Requisitos: Você vai precisar desse repositório no seu computador e de um jdk
 * **Passo 1:** abrir a classe (`org.example.Main`) dentro do diretório com o codigo fonte
 * **Passo 2:** trocar o valor da constante filePath para o caminho absoluto do arquivo (`graph.txt`), que deve seguir a estrutura descrita
 * **Passo 3:** executar o arquivo (`Main.java`) normalmente
-### 5.2- Pelo jar 
+### 5.2- Pelo jar
 Requisitos: Você vai precisar de um jre na sua máquina
 * **Passo 1:** abrir o arquivo (`Grafos.jar`) no terminal (está localizado na pasta out desse diretório)
-* **Passo 2:** Crie um arquivo (`graph.txt`) no mesmo nível que o arquivo jar. Siga a estrutura descrita no [#4. Formato do Arquivo de Entrada](tópico 4).
+* **Passo 2:** Crie um arquivo (`graph.txt`) no mesmo nível que o arquivo jar. Siga a estrutura descrita nas **[regras de formatação](#4-formato-do-arquivo-de-entrada)**..
 * **Passo 3:** execute o código abaixo no terminal:
 ```bash
 java -jar Grafos.jar
@@ -70,5 +70,5 @@ java -jar Grafos.jar
 ### 5.3- Pelo exe
 Requisitos: Desse repositório, você só precisa da pasta out (caso seu sistema seja windows).
 * **Passo 1:** clice duas vezes no arquivo (`Graph.exe`)
-Caso queira diferentes grafos, mude as informações no arquivo (`graph.txt`) seguindo as diretrizes de formatação.
+  Caso queira diferentes grafos, mude as informações no arquivo (`graph.txt`) seguindo as diretrizes de formatação.
 

@@ -42,9 +42,9 @@ public class TXTReader {
             Graph<?, Double> graph = new AdjacencyListGraph<>(type, isWeighted);
             try {
                 Integer.parseInt(firstLine[0]);
-                populateGraph((Graph<Integer, Double>) graph, br, Integer::parseInt);
+                populateGraph((Graph<Integer, Double>) graph, br, firstLine, Integer::parseInt);
             }catch (NumberFormatException ignored) {
-                populateGraph((Graph<String, Double>)graph, br, Function.identity()); // Function.identity() for String
+                populateGraph((Graph<String, Double>)graph, br, firstLine, Function.identity()); // Function.identity() for String
             }
 
             return graph;
@@ -57,16 +57,22 @@ public class TXTReader {
             return Double.parseDouble(line[2]);
     }
     private <T> void populateGraph(Graph<T, Double> graph,
-                                   BufferedReader br,
-                                   Function<String, T> converter) throws IOException {
-        T src;
-        T dest;
+                                                          BufferedReader br,
+                                                          String[] firstLine,
+                                                          Function<String, T> converter) throws IOException {
+        T src = converter.apply(firstLine[0].trim());
+        T dest = converter.apply(firstLine[1].trim());
+        double weight = weightGetter(firstLine);
+        graph.addVertex(src);
+        graph.addVertex(dest);
+        graph.addRelation(src, dest, weight);
+
         String line;
         while ((line = br.readLine()) != null) {
             String[] parts = line.split(" ");
             src = converter.apply(parts[0].trim());
             dest = converter.apply(parts[1].trim());
-            Double weight = weightGetter(parts);
+            weight = weightGetter(parts);
             graph.addVertex(src);
             graph.addVertex(dest);
             graph.addRelation(src, dest, weight);
