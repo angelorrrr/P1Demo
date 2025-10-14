@@ -72,3 +72,33 @@ Requisitos: Desse repositório, você só precisa da pasta out (caso seu sistema
 * **Passo 1:** clice duas vezes no arquivo (`Graph.exe`)
   Caso queira diferentes grafos, mude as informações no arquivo (`graph.txt`) seguindo as diretrizes de formatação.
 
+## 6- Técnicas de Projeto
+O projeto foi construído com a finalidade de ter portabilidade para quaisquer implementações de grafos sem impactar na
+performance dos algoritmos. Para alcançar tal objetivo, recorremos a paradigmas de projeto e de construção de objetos que 
+facilitassem essas implementações.
+### 6.1- Programação Orientada a Objetos
+Na classe grafo, recorremos ao conceito de tipo genérico, amplamente utilizado pela tecnologia Java, para permitir que a estrutura
+de dados porte qualquer tipo de vértice ou aresta.
+Também na classe grafo, definimos uma interface que definisse as funções comuns a todas as implementações e, intermediária à linha de
+herança, implementamos uma classe abstrata que definisse alguns métodos com antecedência.
+Além disso, criamos uma enumeração interna a esta classe (em questão, GraphType), que facilitou o processo de leitura do arquivo de texto. Para isso, criamos
+um nome descritivo do tipo como o valor das enumerações e um atributo String, que seria o símbolo no cabeçalho do arquivo de leitura. Dentro da enumeração, 
+criamos um conversor de String para GraphType, caso exista uma correspondência entre o valor de entrada e os atributos das constantes.
+### 6.2- Singletons, Factories
+Utilizamos alguns métodos de fábrica. Entre eles, um dos mais importantes foi o constructGraph(), que constrói um grafo do mesmo tipo de sua implementação concreta.
+Isso permitiu que nós implementássemos o método do grafo transposto logo na classe abstrata, reduzindo as responsabilidades nas implementações.
+Como Singletons, tivemos duas classes: (`Menu.java`) e (`Context.java`). Optamos por isso pela lógica de não poderem existir dois ou mais menus ou comportadores
+de estado de grafos, e também para permitir o fornecimento direto de algumas informações entre as classes de comandos sem a necessidade de parametrização.
+### 6.3- Padrão Command-Based
+Para a construção do menu, achamos interessante trazer um padrão de projeto amplamente usado na robótica competitiva (mais especificamente, na FIRST Robotics
+Competition). Esse recurso tem pouco aproveitamento para o futuro (só foi útil para o Menu). Mas podem haver outras aplicações desse padrão em algoritmos ou
+ações quaisquer na posteridade.
+### 6.4- Programação Funcional na DFS
+A fim de não precisar escrever 700 dfs, criamos um único método estático na clsse (`DFS.java`) que recebe consummers de vértices para executar ações em in-ordem ou
+pos-ordem. Isso foi muito útil na classe (`Kosaraju.java`), pois o algoritmo, em uma de suas versões, tinha ações em in-ordem e pos-ordem. Com o auxílio da programação 
+funcional, pudemos melhorar a legibilidade desse trecho.
+### 6.5- Gerenciamento de Dependências
+Nas versões iniciais, utilizávamos o gerenciador da ide em uso (em questão, Intellij) para as dependências. Quando tivemos a necessidade de iplementar a classe (`GraphView.java`),
+tivemos que trocar para o Maven para importar algumas dependências importantes (em questão, graphstream). Isso certamente terá utilidade para a posteridade.
+### 6.6- Exceptions personalizadas
+Essa parte é útil para o menu, mas pode ter aplicações no contexto dos algoritmos e dos grafos. EM geral, exceções tornam o sistema muito transparente por conta das stacktraces acusadas.Para remediar, optamos por criar exceções próprias que exibissem erros específicos no contexto do programa. Isso com certeza pode ser útil nos algoritmos.
