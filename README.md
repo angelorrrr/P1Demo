@@ -69,9 +69,10 @@ java -jar Grafos.jar
 ```
 ### 5.3- Pelo exe
 Requisitos: Desse repositório, você só precisa da pasta out (caso seu sistema seja windows).
-* **Passo 1:** clice duas vezes no arquivo (`Graph.exe`)
-  Caso queira diferentes grafos, mude as informações no arquivo (`graph.txt`) seguindo as diretrizes de formatação.
+* **Passo 1:** clice duas vezes no arquivo (`Graph.exe`), localizado na pasta (`out`) do projeto.
 
+  Caso queira diferentes grafos, mude as informações no arquivo (`graph.txt`) seguindo as diretrizes de formatação.
+* **Passo 2:** interaja com o menu, requerindo as funcionalidades que desejar.
 ## 6- Técnicas de Projeto
 O projeto foi construído com a finalidade de ter portabilidade para quaisquer implementações de grafos sem impactar na
 performance dos algoritmos. Para alcançar tal objetivo, recorremos a paradigmas de projeto e de construção de objetos que 

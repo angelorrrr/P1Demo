@@ -15,7 +15,6 @@ import java.util.*;
 public class Menu {
     private final Scanner sc = new Scanner(System.in);
     private static Menu instance;
-    //singleton: não podem haver dois ou mais menus
     public static synchronized Menu getInstance() {
         if (instance == null){
             instance = new Menu();
@@ -23,8 +22,6 @@ public class Menu {
         return instance;
     }
     private Menu(){
-        //já inicializa o grafo para verificar
-        //se existe algum problema na formatação
         Context.getInstance();
     }
     public Scanner getScanner() {

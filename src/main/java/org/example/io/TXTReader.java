@@ -13,13 +13,6 @@ public class TXTReader {
     public TXTReader(String filename) throws IOException {
         file = new File(filename);
     }
-
-    /**
-     * Lê um grafo a partir de um arquivo de texto, detectando automaticamente
-     * o tipo do grafo, se é ponderado e se os vértices são do tipo Integer ou String.
-     * @return Um objeto Grafo preenchido com os dados do arquivo.
-     * @throws IOException Se o arquivo não for encontrado ou estiver vazio.
-     */
     public Graph<?, Double> getGraph() throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             String line = br.readLine();
