@@ -40,4 +40,11 @@
 
 
     </dependencies>
+    <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub Packages</name>
+          <url>https://maven.pkg.github.com/angelorrrr/P1Demo</url> 
+        </repository>
+      </distributionManagement>
 </project>
