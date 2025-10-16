@@ -16,7 +16,7 @@
 * **Nome:** Angelo Antonio Barbosa Luz Freitas
 
 ## 0 - Incorporar a Biblioteca ao Teu Projeto
-Você precisará de um JDK 25 para importar este projeto, e de um gerenciador de dependências maven.
+Você precisará de um JDK 25 para importar este projeto, do maven instalado no seu computador e de um gerenciador de dependências maven.
 Para instalar as bibliotecas, adicione esses trechos ao seu (`pom.xml`):
 Na tag repositories:
 ```pom.xml
