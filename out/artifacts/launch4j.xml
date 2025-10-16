@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>console</headerType>
-  <jar>C:\Users\angel\IdeaProjects\Graphs\out\Grafos.jar</jar>
-  <outfile>C:\Users\angel\IdeaProjects\Graphs\out\Graph.exe</outfile>
+  <jar>C:\Users\angel\IdeaProjects\P2\out\Grafos.jar</jar>
+  <outfile>C:\Users\angel\IdeaProjects\P2\out\Graph.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
