@@ -7,8 +7,6 @@ import org.example.ui.Context;
 import org.example.ui.Menu;
 import org.example.io.TXTReader;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static final String filePath = "graph.txt";
 

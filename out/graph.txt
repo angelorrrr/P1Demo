@@ -1,10 +1,24 @@
-D
-Alice Bob
-Bob Charlie
-Charlie Bob
-Bob David
-David Alice
-Eric Bob
-Xena Yuri
-Yuri Zeca
-Zeca Xena
+ND
+Alice Bob 1
+Alice Carla 3
+Alice Diego 7
+Bob Carla 2
+Bob Diego 4
+Bob Elisa 6
+Carla Felipe 5
+Carla Gina 2
+Diego Felipe 3
+Diego Henrique 4
+Elisa Igor 2
+Felipe Igor 7
+Felipe Gina 4
+Gina Henrique 6
+Henrique Julia 5
+Igor Julia 3
+Julia Kaique 4
+Kaique Lara 2
+Lara Maria 3
+Maria Alice 8
+Xena Yuri 7
+Yuri Zeca 8
+Zeca Xena 9
