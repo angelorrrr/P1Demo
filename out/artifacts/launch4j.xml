@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
-  <headerType>console</headerType>
+  <headerType>gui</headerType>
   <jar>C:\Users\angel\IdeaProjects\P1Demo\out\Grafos.jar</jar>
   <outfile>C:\Users\angel\IdeaProjects\P1Demo\out\Graph.exe</outfile>
   <errTitle></errTitle>
@@ -15,7 +15,7 @@
   <manifest></manifest>
   <icon></icon>
   <jre>
-    <path>runtime</path>
+    <path>%JAVA_HOME%;%PATH%</path>
     <requiresJdk>false</requiresJdk>
     <requires64Bit>false</requires64Bit>
     <minVersion></minVersion>

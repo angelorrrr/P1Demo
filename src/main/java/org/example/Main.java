@@ -8,7 +8,7 @@ import org.example.ui.Menu;
 import org.example.io.TXTReader;
 
 public class Main {
-    public static final String filePath = "C:\\Users\\angel\\IdeaProjects\\P1Demo\\out\\graph.txt";
+    public static final String filePath = "graph.txt";
 
     static void main() {
         System.setProperty("org.graphstream.ui", "swing");
