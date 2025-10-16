@@ -24,7 +24,7 @@ public class Kosaraju<V, U> extends HashMap<String, List<V>> {
                 visited.add(v);
                 list.add(v);
             };
-            DFS.dfs(vertex, visited, graph, preOrderAction, (v)->{});
+            DFS.dfs(vertex, visited, transposed, preOrderAction, (v)->{});
 
             put("comunidade "+counter+": ", list);
             counter++;
