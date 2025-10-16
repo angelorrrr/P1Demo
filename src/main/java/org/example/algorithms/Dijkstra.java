@@ -29,6 +29,10 @@ public class Dijkstra {
         while (!queue.isEmpty()) {
             Object current = queue.poll();
 
+            if (distances.get(current) == null || distances.get(current) == Double.MAX_VALUE) {
+                continue;
+            }
+
             for (Object neighbor : graph.getNeightbours(current)) {
                 try {
                     double edgeWeight = (Double) graph.getRelation(current, neighbor);
@@ -37,11 +41,11 @@ public class Dijkstra {
                     if (newDist < distances.get(neighbor)) {
                         distances.put(neighbor, newDist);
                         predecessors.put(neighbor, current);
-                        queue.remove(neighbor);
+
                         queue.add(neighbor);
                     }
                 } catch (ClassCastException | NullPointerException e) {
-                    return;
+                    break;
                 }
             }
         }
@@ -57,11 +61,12 @@ public class Dijkstra {
             if (at.equals(v1)) break;
         }
 
-        if (!path.getFirst().equals(v1)) {
+        if (!path.isEmpty() && !path.get(path.size() - 1).equals(v1)) {
             System.out.println("não deu pra achar um caminho");
             return List.of();
         }
 
+        Collections.reverse(path);
         return path;
     }
 }

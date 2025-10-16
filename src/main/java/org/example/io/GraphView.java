@@ -18,7 +18,6 @@ public class GraphView {
 
         for (T v1 : customGraph.vertexSet()) {
             for (T v2 : customGraph.getNeightbours(v1)) {
-                // Truque para não desenhar a mesma aresta duas vezes em grafos não-dirigidos
                 if (!customGraph.isDirected() && v1.toString().compareTo(v2.toString()) > 0) continue;
                 String id = v1 + "-" + v2;
                 if (graph.getEdge(id) != null)
