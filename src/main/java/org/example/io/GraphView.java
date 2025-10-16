@@ -21,9 +21,13 @@ public class GraphView {
                 // Truque para não desenhar a mesma aresta duas vezes em grafos não-dirigidos
                 if (!customGraph.isDirected() && v1.toString().compareTo(v2.toString()) > 0) continue;
                 String id = v1 + "-" + v2;
-                if (graph.getEdge(id) == null)
+                if (graph.getEdge(id) != null)
+                    continue;
+                if(customGraph.isWeighted())
                     graph.addEdge(id, v1.toString(), v2.toString(), customGraph.isDirected())
                             .setAttribute("ui.label", String.valueOf(customGraph.getRelation(v1, v2)));
+                else
+                    graph.addEdge(id, v1.toString(), v2.toString(), customGraph.isDirected());
             }
         }
 
