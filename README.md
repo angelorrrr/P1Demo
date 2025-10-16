@@ -15,6 +15,36 @@
 * **Nome:** Camila Luiza Silva Machado
 * **Nome:** Angelo Antonio Barbosa Luz Freitas
 
+## 0 - Incorporar a Biblioteca ao Teu Projeto
+Você precisará de um JDK 25 para importar este projeto, e de um gerenciador de dependências maven.
+Para instalar as bibliotecas, adicione esses trechos ao seu (`pom.xml`):
+Na tag repositories:
+```pom.xml
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/angelorrrr/P1Demo</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>central</id>
+            <url>https://repo.maven.apache.org/maven2</url>
+        </repository>
+```
+Na tag dependecies:
+```pom.xml
+  <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>grafos</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </dependency>
+```
+Caso não as tenha criado, será necessário criá-las (ou o maven acusará erro na hora da instalação).
+Por fim, instale as bibliotecas:
+```bash
+mvn install
+```
 ## 1. Descrição do Projeto
 Este projeto, desenvolvido para a disciplina de Estrutura de Dados Avançada, aplica conceitos teóricos na resolução de um problema prático do mundo da computação. O trabalho consistiu na implementação de uma estrutura de dados para grafos a partir do zero, com operações básicas e um algoritmo de busca para solucionar um problema específico.
 
