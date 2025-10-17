@@ -33,7 +33,7 @@ Na tag dependecies:
   <dependency>
 	    <groupId>com.github.angelorrrr</groupId>
 	    <artifactId>P1Demo</artifactId>
-	    <version>Tag</version>
+	    <version>1.5</version>
 	</dependency>
 </dependencies>
 ```
