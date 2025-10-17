@@ -20,25 +20,22 @@ Você precisará de um JDK 25 para importar este projeto, do maven instalado no 
 Para instalar as bibliotecas, adicione esses trechos ao seu (`pom.xml`):
 Na tag repositories:
 ```pom.xml
-        <repository>
-            <id>github</id>
-            <url>https://maven.pkg.github.com/angelorrrr/P1Demo</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-        <repository>
-            <id>central</id>
-            <url>https://repo.maven.apache.org/maven2</url>
-        </repository>
+        <repositories>
+      		<repository>
+      		    <id>jitpack.io</id>
+      		    <url>https://jitpack.io</url>
+      		</repository>
+      	</repositories>
 ```
 Na tag dependecies:
 ```pom.xml
+<dependencies>
   <dependency>
-        <groupId>org.example</groupId>
-        <artifactId>grafos</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </dependency>
+	    <groupId>com.github.angelorrrr</groupId>
+	    <artifactId>P1Demo</artifactId>
+	    <version>Tag</version>
+	</dependency>
+</dependencies>
 ```
 Caso não as tenha criado, será necessário criá-las (ou o maven acusará erro na hora da instalação).
 Por fim, instale as bibliotecas:
