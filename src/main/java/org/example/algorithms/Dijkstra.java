@@ -106,11 +106,6 @@ public class Dijkstra {
             if (at.equals(v1)) break;
         }
 
-        if (!path.getFirst().equals(v1)) {
-            System.out.println("não deu pra achar um caminho");
-            return List.of();
-        }
-
         return path;
     }
 }

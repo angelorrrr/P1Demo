@@ -10,7 +10,7 @@ import org.example.io.TXTReader;
 public class Main {
     public static final String filePath = "graph.txt";
 
-    static void main() {
+    public static void main(String[] args) {
         System.setProperty("org.graphstream.ui", "swing");
         System.setProperty("java.awt.headless", "true");
         Menu menu = Menu.getInstance();
