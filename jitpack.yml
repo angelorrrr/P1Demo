@@ -1,2 +1,7 @@
-jdk:
-  - openjdk17
+before_install:
+  # Tenta instalar o Java 25 (substitua a versão exata se for diferente)
+  - sdk install java 25-open
+
+# Use o Maven normal (sem o wrapper)
+install:
+  - mvn install -DskipTests=true
