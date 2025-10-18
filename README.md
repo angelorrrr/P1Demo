@@ -41,6 +41,28 @@ Por fim, instale as bibliotecas:
 ```bash
 mvn install
 ```
+Se for em gradle:
+Coloque isso no gradle.settings
+```gradle.settings
+dependencyResolutionManagement {
+		repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+		repositories {
+			mavenCentral()
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+Importe as dependências para o módulo que desejar:
+```Module.gradle
+dependencies {
+	        implementation 'com.github.angelorrrr:P1Demo:Tag'
+	}
+```
+Por fim, instale as dependências:
+```bash
+./gradlew build
+```
+
 Após isso, use as funcionalidades normalmente:
 ```java
 import org.example.core.implementations.AdjacencyListGraph;
