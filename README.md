@@ -55,7 +55,7 @@ dependencyResolutionManagement {
 Importe as dependências para o módulo que desejar:
 ```Module.gradle
 dependencies {
-	        implementation 'com.github.angelorrrr:P1Demo:Tag'
+	        implementation 'com.github.angelorrrr:P1Demo:1.5'
 	}
 ```
 Por fim, instale as dependências:
